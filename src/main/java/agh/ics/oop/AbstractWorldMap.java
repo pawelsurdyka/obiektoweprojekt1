@@ -81,7 +81,7 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver {
                     this.noGrassStep.add(pos);
             }
     }
-
+    public abstract boolean canMoveTo(Vector2d position);
     public CopyOnWriteArrayList<Animal> getA(){
         return A;
     }
@@ -383,7 +383,7 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver {
 
         ArrayList<Animal> animalst = getStrongest(v,true);
         ArrayList<Animal> animalstt = getOldest(animalst,true);
-        ArrayList<Animal> animalsttt = get500plus(animalstt,true);
+        //ArrayList<Animal> animalsttt = get500plus(animalstt,true);
 
         if(animalsf.size() == 1){
             animalsFinal = animalst;
@@ -533,7 +533,6 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver {
             trackedInfo[3]+=1;
     }
 
-    public abstract boolean canMoveTo(Vector2d position);
 
     public IMapElement objectAt(Vector2d position){
         ArrayList<Animal> animalsOnPosition = getStrongest(position,false);

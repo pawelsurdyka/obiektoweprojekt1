@@ -94,22 +94,22 @@ public class SimulationEngine implements Runnable, IPositionChangeObserver {
     }
 
     void refreshData(){
-        double e=0;
+        double energy=0;
         CopyOnWriteArrayList<Animal> animals = map.getA();
         for(Animal a:animals) {
-            e += a.getEnergy();
+            energy += a.getEnergy();
         }
         if(A.size()>0) {
-            e /= A.size();
+            energy /= A.size();
         }
         else{
-            e = 0;
+            energy = 0;
         }
         for(int i=0;i<chartsOrder.size();i++){
             switch (chartsOrder.get(i)) {
                 case "Number of animals" -> chartsInfo.get(i).add((double) A.size());
                 case "Number of grass" -> chartsInfo.get(i).add((double) map.getG().size());
-                case "Average energy of living animals" -> chartsInfo.get(i).add(e);
+                case "Average energy of living animals" -> chartsInfo.get(i).add(energy);
                 case "Average lifespan of dead animals" -> chartsInfo.get(i).add(map.avgAge());
                 case "Number of unoccupied fields" -> chartsInfo.get(i).add((double) map.getNumOfFreeLand());
             }
